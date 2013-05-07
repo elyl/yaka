@@ -2,6 +2,10 @@ public class Main
 {
     public static void main(String args[])
     {
-	System.out.println("toto");
+	Plateau	p;
+
+	p = new Plateau();
+	p.initialize();
+	System.out.println(p);
     }
 }
