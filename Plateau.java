@@ -18,22 +18,22 @@ public class Plateau
 		j = 0;
 		while (j < 8)
 		    {
-			if (i == 0)
+			if (i == 6)
 			    if (j % 2 == 1)
 				this.plateau[i][j] = new PieceCarree(i, j, Piece.NOIR);
 			    else
 				this.plateau[i][j] = new PieceRonde(i, j, Piece.NOIR);
-			else if (i == 1)
+			else if (i == 7)
 			    if (j % 2 == 1)
 				this.plateau[i][j] = new PieceRonde(i, j, Piece.NOIR);
 			    else
 				this.plateau[i][j] = new PieceCarree(i, j, Piece.NOIR);
-			else if (i == 6)
+			else if (i == 0)
 			    if (j % 2 == 1)
 				this.plateau[i][j] = new PieceCarree(i, j, Piece.BLANC);
 			    else
 				this.plateau[i][j] = new PieceRonde(i, j, Piece.BLANC);
-			else if (i == 7)
+			else if (i == 1)
 			    if (j % 2 == 1)
 				this.plateau[i][j] = new PieceRonde(i, j, Piece.BLANC);
 			    else

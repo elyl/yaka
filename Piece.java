@@ -1,7 +1,7 @@
 public abstract class Piece
 {
-    public static final int NOIR = -1;
-    public static final int BLANC = 1;
+    public static final int NOIR = 1;
+    public static final int BLANC = -1;
     public static final int VIDE = 0;
     
     private int	x;
@@ -45,5 +45,40 @@ public abstract class Piece
     public char getCode()
     {
 	return ('.');
+    }
+
+    public boolean moveOut(Mouvement m)
+    {
+	int	newX;
+
+	newX = this.x + this.couleur * m.getDeltaX;
+	if (newX > 7 || newX < 0)
+	    return (true);
+	else
+	    return (false);
+    }
+
+    public boolean WiningMove(Mouvement m)
+    {
+	int	newY;
+
+	newY = this.y + this.couleur * m.getDeltaY;
+	if (newY < 0 || newY > 7)
+	    return (true);
+	else
+	    return (false);
+    }
+
+    public boolean colision(Mouvement m)
+    {
+	
+    }
+
+    public boolean canMove(Mouvement m)
+    {
+	if (moveOut(m) || )
+	    return (false);
+	else
+	    return (true);
     }
 }
