@@ -1,10 +1,10 @@
 public class Plateau
 {
-    private Piece plateau[][];
+    public static Piece plateau[][];
 
     public Plateau()
     {
-	this.plateau = new Piece[8][8];
+	Plateau.plateau = new Piece[8][8];
     }
 
     public void initialize()
@@ -20,26 +20,26 @@ public class Plateau
 		    {
 			if (i == 6)
 			    if (j % 2 == 1)
-				this.plateau[i][j] = new PieceCarree(i, j, Piece.NOIR);
+				Plateau.plateau[i][j] = new PieceCarree(i, j, Piece.NOIR);
 			    else
-				this.plateau[i][j] = new PieceRonde(i, j, Piece.NOIR);
+				Plateau.plateau[i][j] = new PieceRonde(i, j, Piece.NOIR);
 			else if (i == 7)
 			    if (j % 2 == 1)
-				this.plateau[i][j] = new PieceRonde(i, j, Piece.NOIR);
+				Plateau.plateau[i][j] = new PieceRonde(i, j, Piece.NOIR);
 			    else
-				this.plateau[i][j] = new PieceCarree(i, j, Piece.NOIR);
+				Plateau.plateau[i][j] = new PieceCarree(i, j, Piece.NOIR);
 			else if (i == 0)
 			    if (j % 2 == 1)
-				this.plateau[i][j] = new PieceCarree(i, j, Piece.BLANC);
+				Plateau.plateau[i][j] = new PieceCarree(i, j, Piece.BLANC);
 			    else
-				this.plateau[i][j] = new PieceRonde(i, j, Piece.BLANC);
+				Plateau.plateau[i][j] = new PieceRonde(i, j, Piece.BLANC);
 			else if (i == 1)
 			    if (j % 2 == 1)
-				this.plateau[i][j] = new PieceRonde(i, j, Piece.BLANC);
+				Plateau.plateau[i][j] = new PieceRonde(i, j, Piece.BLANC);
 			    else
-				this.plateau[i][j] = new PieceCarree(i, j, Piece.BLANC);
+				Plateau.plateau[i][j] = new PieceCarree(i, j, Piece.BLANC);
 			else
-			    this.plateau[i][j] = new PieceVide(i, j, Piece.VIDE);
+			    Plateau.plateau[i][j] = new PieceVide(i, j, Piece.VIDE);
 			j++;
 		    }
 		i++;
@@ -70,7 +70,7 @@ public class Plateau
 			    else if (j == 1 || j == 10)
 				str = str + "|";
 			    else
-				str = str + this.plateau[i - 1][j - 2].getCode() + " ";
+				str = str + Plateau.plateau[i - 1][j - 2].getCode() + " ";
 			j++;
 		    }
 		str = str + "\n";

@@ -75,7 +75,7 @@ public abstract class Piece
 	int	newY;
 
 	newX = this.x + this.couleur * m.getDeltaX();
-	newY = this.y + this.couleur * m.getDelta()Y;
+	newY = this.y + this.couleur * m.getDeltaY();
 	if (this.couleur == Plateau.plateau[newX][newY].getCouleur())
 	    return (true);
 	else
@@ -84,7 +84,7 @@ public abstract class Piece
 
     public boolean canMove(Mouvement m)
     {
-	if (!moveOut(m) && (winingMove(m)) || !colision(m)))
+	if (!moveOut(m) && (winingMove(m) || !colision(m)))
 	    return (true);
 	else
 	    return (false);

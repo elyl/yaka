@@ -7,5 +7,6 @@ public class Main
 	p = new Plateau();
 	p.initialize();
 	System.out.println(p);
+	System.out.println(Plateau.plateau[1][3].canMove(Mouvements.AHEAD));
     }
 }
