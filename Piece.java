@@ -62,12 +62,12 @@ public abstract class Piece
 
     public boolean moveOut(Mouvement m)
     {
-	return (this.moveOut(this.x + this.couleur * m.getDeltaX()));
+	return (this.moveOut(this.y + this.couleur * m.getDeltaY()));
     }
 
-    private boolean moveOut(int newX)
+    private boolean moveOut(int newY)
     {
-	if (newX > 7 || newX < 0)
+	if (newY > 7 || newY < 0)
 	    return (true);
 	else
 	    return (false);
