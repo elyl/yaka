@@ -18,4 +18,9 @@ public class Mouvement
     {
 	return (this.deltaY);
     }
+
+    public String toString()
+    {
+	return ("deltaX : " + this.deltaX + ", deltaY : " + this.deltaY);
+    }
 }
