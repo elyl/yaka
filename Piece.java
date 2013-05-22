@@ -1,7 +1,7 @@
 public abstract class Piece
 {
-    public static final int NOIR = 1;
-    public static final int BLANC = -1;
+    public static final int NOIR = -1;
+    public static final int BLANC = 1;
     public static final int VIDE = 0;
     
     private int	x;
