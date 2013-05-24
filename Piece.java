@@ -49,9 +49,11 @@ public abstract class Piece
 
     public boolean moveOut(Mouvement m)
     {
-	int	newX;
+	return (this.moveOut(this.x + this.couleur * m.getDeltaX()));
+    }
 
-	newX = this.x + this.couleur * m.getDeltaX();
+    private boolean moveOut(int newX)
+    {
 	if (newX > 7 || newX < 0)
 	    return (true);
 	else
@@ -60,9 +62,11 @@ public abstract class Piece
 
     public boolean winingMove(Mouvement m)
     {
-	int	newY;
+	return (this.winingMove(this.y + this.couleur * m.getDeltaY()));
+    }
 
-	newY = this.y + this.couleur * m.getDeltaY();
+    private boolean winingMove(int newY)
+    {
 	if (newY < 0 || newY > 7)
 	    return (true);
 	else
@@ -71,11 +75,11 @@ public abstract class Piece
 
     public boolean colision(Mouvement m)
     {
-	int	newX;
-	int	newY;
+	return (this.colision(this.x + this.couleur * m.getDeltaX(), this.y + this.couleur * m.getDeltaY()));
+    }
 
-	newX = this.x + this.couleur * m.getDeltaX();
-	newY = this.y + this.couleur * m.getDeltaY();
+    private boolean colision(int newX, int newY)
+    {
 	if (this.couleur == Plateau.plateau[newX][newY].getCouleur())
 	    return (true);
 	else
@@ -84,6 +88,11 @@ public abstract class Piece
 
     public boolean canMove(Mouvement m)
     {
+	int	newX;
+	int	newY;
+
+	newX = this.x + this.couleur * m.getDeltaX();
+	newY = this.y + this.couleur * m.getDeltaY();
 	if (!moveOut(m) && (winingMove(m) || !colision(m)))
 	    return (true);
 	else
@@ -95,7 +104,7 @@ public abstract class Piece
 	int	newX;
 	int	newY;
 
-	if (!canMove(m))
+	if (!this.canMove(m))
 	    return (false);
 	newX = this.x + this.couleur * m.getDeltaX();
 	newY = this.y + this.couleur * m.getDeltaY();
