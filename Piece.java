@@ -89,4 +89,20 @@ public abstract class Piece
 	else
 	    return (false);
     }
+
+    public boolean move(Mouvement m)
+    {
+	int	newX;
+	int	newY;
+
+	if (!canMove(m))
+	    return (false);
+	newX = this.x + this.couleur * m.getDeltaX();
+	newY = this.y + this.couleur * m.getDeltaY();
+	Plateau.plateau[this.x][this.y] = new PieceVide(this.x, this.y, Piece.VIDE);
+	Plateau.plateau[newX][newY] = this;
+	this.x = newX;
+	this.y = newY;
+	return (true);
+    }
 }
