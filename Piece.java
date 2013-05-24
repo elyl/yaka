@@ -86,13 +86,16 @@ public abstract class Piece
 	    return (false);
     }
 
+    public boolean canMove(int newX, int newY)
+    {
+	if (!moveOut(newX) && (winingMove(newY) || !colision(newX, newY)))
+	    return (true);
+	else
+	    return (false);
+    }
+
     public boolean canMove(Mouvement m)
     {
-	int	newX;
-	int	newY;
-
-	newX = this.x + this.couleur * m.getDeltaX();
-	newY = this.y + this.couleur * m.getDeltaY();
 	if (!moveOut(m) && (winingMove(m) || !colision(m)))
 	    return (true);
 	else
