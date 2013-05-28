@@ -1,11 +1,11 @@
 NAME=		yaka
-JC=		gcj
-JFLAGS=		-g -Wall
+JC=		javac
+JFLAGS=		-g
 CLASSPATH=	class
 MAIN=		Main
 .SUFFIXES:	.java .class
 .java.class:
-	$(JC) $(JFLAGS) -C -d $(CLASSPATH) $*.java
+	$(JC) $(JFLAGS) -d $(CLASSPATH) $*.java
 RM=		@rm -fv
 SRC=		\
 		Piece.java		\
@@ -15,11 +15,13 @@ SRC=		\
 		Plateau.java		\
 		Mouvement.java		\
 		Mouvements.java		\
+		Coup.java		\
+		Joueur.java		\
+		JoueurHasardPur.java	\
 		Main.java
 CLASSES=	$(SRC:.java=.class)
 
 $(NAME): $(CLASSES)
-	$(JC) $(JFLAGS) -I $(CLASSPATH) $(CLASSPATH)/*.class --main=$(MAIN) -o $(NAME)
 
 clean:
 	$(RM) $(CLASSPATH)/$(CLASSES)
