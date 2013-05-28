@@ -33,6 +33,11 @@ public abstract class Piece
 	return (this.couleur);
     }
 
+    public Joueur getJoueur()
+    {
+	return (this.joueur);
+    }
+
     public String toString()
     {
 	String	str;
@@ -48,6 +53,11 @@ public abstract class Piece
     public char getCode()
     {
 	return ('.');
+    }
+
+    public Mouvement[] getMouvements()
+    {
+	return (this.mouvements);
     }
 
     public boolean moveOut(Mouvement m)
@@ -110,11 +120,10 @@ public abstract class Piece
 	int	newX;
 	int	newY;
 
-	if (!this.canMove(m))
-	    return (false);
 	newX = this.x + this.couleur * m.getDeltaX();
 	newY = this.y + this.couleur * m.getDeltaY();
 	Plateau.plateau[this.x][this.y] = new PieceVide(this.x, this.y, Piece.VIDE);
+	Plateau.plateau[newX][newY].getJoueur().removePiece(Plateau.plateau[newX][newY]);
 	Plateau.plateau[newX][newY] = this;
 	this.x = newX;
 	this.y = newY;
