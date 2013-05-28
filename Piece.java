@@ -4,15 +4,18 @@ public abstract class Piece
     public static final int BLANC = 1;
     public static final int VIDE = 0;
     
-    private int	x;
-    private int	y;
-    private int	couleur;
-    
-    public Piece(int x, int y, int couleur)
+    protected int		x;
+    protected int		y;
+    protected int		couleur;
+    protected Mouvement		mouvements[];
+    protected Joueur		joueur;
+
+    public Piece(int x, int y, int couleur, Mouvement mouvements[])
     {
 	this.x = x;
 	this.y = y;
 	this.couleur = couleur;
+	this.mouvements = mouvements;
     }
 
     public int getX()

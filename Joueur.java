@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public abstract class Joueur
 {
-    private ArrayList<Piece>	pieces;
-    private int			couleur;
+    protected ArrayList<Piece>	pieces;
+    protected int		couleur;
     
     public Joueur(int couleur)
     {
@@ -15,7 +15,7 @@ public abstract class Joueur
     {
 	ArrayList<Coup> coups;
 
-	coups = new ArrayList<Coup>;
+	coups = new ArrayList<Coup>();
 	return (coups);
     }
 

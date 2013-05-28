@@ -2,7 +2,7 @@ public class PieceRonde extends Piece
 {
     public PieceRonde(int x, int y, int couleur)
     {
-	super(x, y, couleur);
+	super(x, y, couleur, Mouvements.ROUND_MOVE);
     }
 
     public char getCode()

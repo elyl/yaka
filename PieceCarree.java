@@ -2,7 +2,7 @@ public class PieceCarree extends Piece
 {
     public PieceCarree(int x, int y, int couleur)
     {
-	super(x, y, couleur);
+	super(x, y, couleur, Mouvements.SQUARE_MOVE);
     }
 
     public char getCode()
