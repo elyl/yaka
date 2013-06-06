@@ -2,11 +2,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Arrays;
 
+/** Gestion des joueurs. */
 public abstract class Joueur
 {
     protected ArrayList<Piece>	pieces;
     protected int		couleur;
     
+    /** Initialise un joueur. */
     public Joueur(int couleur)
     {
 	this.couleur = couleur;
@@ -29,6 +31,7 @@ public abstract class Joueur
 	    }
     }
 
+    /** Retourne une ArrayList contenant les coups possibles pour le joueur courant. */
     public ArrayList<Coup> getCoups()
     {
 	ArrayList<Coup>		coups;
@@ -55,11 +58,13 @@ public abstract class Joueur
 
     public abstract Coup coupChoisi();
 
+    /** Retire une la piece p de la liste des pieces du joueur courant. */
     public void removePiece(Piece p)
     {
 	this.pieces.remove(p);
     }
 
+    /** Affiche la liste des pieces du joueur courant. */
     public String toString()
     {
 	Iterator<Piece>	itr;

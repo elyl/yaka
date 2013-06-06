@@ -1,3 +1,4 @@
+/** Gestion des coups. */
 public class Coup
 {
     Piece	piece;

@@ -1,3 +1,4 @@
+/** Definition des mouvements. */
 public class Mouvements
 {
     public static final Mouvement RIGHT = new Mouvement(0, 1);

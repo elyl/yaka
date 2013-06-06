@@ -1,12 +1,15 @@
+/** Gestion du plateau de jeu. */
 public class Plateau
 {
     public static Piece plateau[][];
 
+    /** Initialise un plateau de jeu vide. */
     public Plateau()
     {
 	Plateau.plateau = new Piece[8][8];
     }
 
+    /** Initialise le plateau de jeu courant. */
     public void initialize()
     {
 	int	i;
@@ -46,6 +49,7 @@ public class Plateau
 	    }
     }
 
+    /** Affiche le plateau de jeu courant. */
     public String toString()
     {
 	String	str;
