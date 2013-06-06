@@ -16,6 +16,7 @@ public abstract class Piece
 	this.y = y;
 	this.couleur = couleur;
 	this.mouvements = mouvements;
+	this.joueur = null;
     }
 
     public int getX()
@@ -36,6 +37,11 @@ public abstract class Piece
     public Joueur getJoueur()
     {
 	return (this.joueur);
+    }
+
+    public void setJoueur(Joeuur j)
+    {
+	this.joueur = j;
     }
 
     public String toString()
@@ -123,7 +129,8 @@ public abstract class Piece
 	newX = this.x + this.couleur * m.getDeltaX();
 	newY = this.y + this.couleur * m.getDeltaY();
 	Plateau.plateau[this.x][this.y] = new PieceVide(this.x, this.y, Piece.VIDE);
-	Plateau.plateau[newX][newY].getJoueur().removePiece(Plateau.plateau[newX][newY]);
+	if (Plateau.plateau[newX][newY].getJoueur() != null)
+	    Plateau.plateau[newX][newY].getJoueur().removePiece(Plateau.plateau[newX][newY]);
 	Plateau.plateau[newX][newY] = this;
 	this.x = newX;
 	this.y = newY;
