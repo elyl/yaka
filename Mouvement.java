@@ -2,11 +2,18 @@ public class Mouvement
 {
     private int	deltaX;
     private int	deltaY;
+    private int amplitude;
 
     public Mouvement(int deltaX, int deltaY)
     {
+	Mouvement(deltaX, deltaY, 1);
+    }
+
+    public Mouvement(int deltaX, int deltaY, int amplitude)
+    {
 	this.deltaX = deltaX;
 	this.deltaY = deltaY;
+	this.amplitude = amplitude;
     }
 
     public int getDeltaX()
@@ -17,6 +24,21 @@ public class Mouvement
     public int getDeltaY()
     {
 	return (this.deltaY);
+    }
+
+    public int getAmplitude()
+    {
+	return (this.amplitude);
+    }
+
+    public void setAmplitude(int amplitude)
+    {
+	this.amplitude = amplitude;
+    }
+
+    public boolean equals(Mouvement m)
+    {
+	return m.getDeltaX() == deltaX && m.getDeltaY() == deltaY;
     }
 
     public String toString()
