@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class JoueurHumain extends Joueur
 {
@@ -8,7 +9,6 @@ public class JoueurHumain extends Joueur
     JoueurHumain(int couleur)
     {
 	super(couleur);
-	this.sc = new Scanner(System.in);
     }
     
     public Coup coupChoisi()
@@ -21,22 +21,47 @@ public class JoueurHumain extends Joueur
 	int		c;
 	int		a;
 
+	if (sc == null)
+	    sc = new Scanner(System.in);
 	liste = getCoups();	
 	coup = null;
-	tmp = "";
 	while (coup == null)
 	    {
+		tmp = "";
 		while (tmp.length() < 7)
-		    tmp = sc.nextLine();
+		    {
+			tmp = sc.nextLine();
+			System.out.println(tmp.length());
+		    }
+		System.out.println("longueur ok");
 		x = Integer.parseInt(tmp.substring(0, 1));
 		y = Integer.parseInt(tmp.substring(2, 3));
 		c = Integer.parseInt(tmp.substring(4, 5));
 		a = Integer.parseInt(tmp.substring(6, 7));
 		if (x < 7 && x > 0 && y < 7 && y > 0 && c > 0 && c < Mouvements.ALL_MOVES.length)
 		    coup = new Coup(Plateau.plateau[x][y], new Mouvement(Mouvements.ALL_MOVES[c].getDeltaX(), Mouvements.ALL_MOVES[c].getDeltaY(), a));
-		if (!liste.contains(coup))
-		    coup = null;
+		System.out.println(coup);
+		if (!inList(liste, coup))
+		    {
+			System.out.println("toto");
+			coup = null;
+		    }
 	    }
 	return coup;
+    }
+
+    private boolean inList(ArrayList<Coup> coups, Coup c)
+    {
+	Iterator<Coup>	itr;
+	Coup		elem;
+
+	itr = coups.iterator();
+	while (itr.hasNext())
+	    {
+		elem = itr.next();
+		if (elem.getPiece() == c.getPiece() && elem.getMouvement().equals(c.getMouvement()) && elem.getMouvement().getAmplitude() == c.getMouvement().getAmplitude())
+		    return true;
+	    }
+	return false;
     }
 }

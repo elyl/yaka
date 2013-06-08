@@ -46,7 +46,13 @@ public class Coup
     public Piece getPiece()
     {
 	return piece;
-    }		
+    }	
+
+    /** Retourne le mouvement associé au mouvement courant. */
+    public Mouvement getMouvement()
+    {
+	return mouvement;
+    }
 
     /** Affiche les caracteristiques du coup courant */
     public String toString()
