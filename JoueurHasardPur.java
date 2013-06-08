@@ -14,7 +14,7 @@ public class JoueurHasardPur extends Joueur
     {
 	ArrayList<Coup>	liste;
 
-	liste = this.getCoups();
-	return (liste.get((int)(Math.random() * liste.size())));
+	liste = getCoups();
+	return liste.get((int)(Math.random() * liste.size()));
     }
 }

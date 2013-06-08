@@ -87,6 +87,12 @@ public abstract class Piece
     {
 	return newX < 0 || newX > 7;
     }
+    
+    /** Retourne la distance qui separe la piece de la victoire */
+    public int distanceToWin()
+    {
+	return (couleur == Piece.BLANC) ? 7 - x : x;
+    }
 
     /** Retourne true si le mouvement de la piece courante conduit à une colision. */
     public boolean colision(int newX, int newY)

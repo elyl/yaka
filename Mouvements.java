@@ -10,4 +10,6 @@ public class Mouvements
     public static final Mouvement NO_MOVE[] = {};
     public static final Mouvement SQUARE_MOVE[] = {AHEAD, LEFT, RIGHT};
     public static final Mouvement ROUND_MOVE[] = {RIGHT_AHEAD, LEFT_AHEAD};
+
+    public static final Mouvement ALL_MOVES[] = {RIGHT, LEFT, AHEAD, LEFT_AHEAD, RIGHT_AHEAD};
 }

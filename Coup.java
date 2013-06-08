@@ -1,13 +1,15 @@
 /** Gestion des coups. */
 public class Coup
 {
-    Piece	piece;
-    Mouvement	mouvement;
+    private Piece	piece;
+    private Mouvement	mouvement;
+    private int		poids;
 
     public Coup(Piece piece, Mouvement mouvement)
     {
 	this.piece = piece;
 	this.mouvement = mouvement;
+	this.poids = 0;
     }
     
     /** Retourne true si le coup est gagnant */
@@ -27,6 +29,24 @@ public class Coup
     {
 	this.piece.move(this.mouvement);
     }
+
+    /** Retourne le poids Attribué au coup courant */
+    public int getPoids()
+    {
+	return poids;
+    }
+    
+    /** Change le poids du coup courant */
+    public void setPoids(int poids)
+    {
+	this.poids = poids;
+    }
+
+    /** Retourne la piece associee au mouvement courant . */
+    public Piece getPiece()
+    {
+	return piece;
+    }		
 
     /** Affiche les caracteristiques du coup courant */
     public String toString()
