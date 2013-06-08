@@ -45,9 +45,14 @@ public abstract class Piece
 	return (this.joueur);
     }
 
-    public void setJoueur(Joeuur j)
+    public void setJoueur(Joueur j)
     {
 	this.joueur = j;
+    }
+
+    public boolean canStack()
+    {
+	return true;
     }
 
     /** Affiche les caracteristiques d'une piece. */
@@ -72,63 +77,32 @@ public abstract class Piece
     }
 
     /** Retourne true si la piece courante sort des limites du plateau. */
-    public boolean moveOut(Mouvement m)
-    {
-	return (this.moveOut(this.y + this.couleur * m.getDeltaY()));
-    }
-
-    /** Est tres moche. Trololo. */
     private boolean moveOut(int newY)
     {
-	if (newY > 7 || newY < 0)
-	    return true;
-	else
-	    return false;
+	return newY > 7 || newY < 0;
     }
 
     /** Retourne true si le mouvement de la piece courante fait gagner la partie. */
-    public boolean winingMove(Mouvement m)
+    public boolean winingMove(int newX)
     {
-	return (this.winingMove(this.y + this.couleur * m.getDeltaY()));
-    }
-
-    private boolean winingMove(int newY)
-    {
-	if (newY < 0 || newY > 7)
-	    return true;
-	else
-	    return false;
+	return newX < 0 || newX > 7;
     }
 
     /** Retourne true si le mouvement de la piece courante conduit à une colision. */
-    public boolean colision(Mouvement m)
+    public boolean colision(int newX, int newY)
     {
-	return (this.colision(this.x + this.couleur * m.getDeltaX(), this.y + this.couleur * m.getDeltaY()));
-    }
-
-    private boolean colision(int newX, int newY)
-    {
-	if (this.couleur == Plateau.plateau[newX][newY].getCouleur())
-	    return true;
-	else
-	    return false;
+	return this.couleur == Plateau.plateau[newX][newY].getCouleur() && !this.canStack() && !Plateau.plateau[newX][newY].canStack();
     }
 
     /** Retourne true sir le mouvement de la piece courante est possible. */
-    public boolean canMove(int newX, int newY)
-    {
-	if (!moveOut(newX) && (winingMove(newY) || !colision(newX, newY)))
-	    return true;
-	else
-	    return false;
-    }
-
     public boolean canMove(Mouvement m)
     {
-	if (!moveOut(m) && (winingMove(m) || !colision(m)))
-	    return true;
-	else
-	    return false;
+	int	newX;
+	int	newY;
+
+	newX = this.x + this.couleur * m.getDeltaX() * m.getAmplitude();
+	newY = this.y + this.couleur * m.getDeltaY() * m.getAmplitude();
+	return !moveOut(newY) && (winingMove(newX) || !colision(newX, newY));
     }
 
     /** Deplace la piece courante. */
@@ -136,13 +110,18 @@ public abstract class Piece
     {
 	int	newX;
 	int	newY;
+	Joueur	j;
 
-	newX = this.x + this.couleur * m.getDeltaX();
-	newY = this.y + this.couleur * m.getDeltaY();
+	newX = this.x + this.couleur * m.getDeltaX() * m.getAmplitude();
+	newY = this.y + this.couleur * m.getDeltaY() * m.getAmplitude();
 	Plateau.plateau[this.x][this.y] = new PieceVide(this.x, this.y, Piece.VIDE);
-	if (Plateau.plateau[newX][newY].getJoueur() != null)
-	    Plateau.plateau[newX][newY].getJoueur().removePiece(Plateau.plateau[newX][newY]);
-	Plateau.plateau[newX][newY] = this;
+	j = Plateau.plateau[newX][newY].getJoueur();
+        if (j != null)
+	   Plateau.plateau[newX][newY].getJoueur().removePiece(Plateau.plateau[newX][newY]);
+	if (j == joueur)
+	    Plateau.plateau[newX][newY] = new PieceComposee(newX, newY, this, Plateau.plateau[newX][newY]);
+	else
+	    Plateau.plateau[newX][newY] = this;
 	this.x = newX;
 	this.y = newY;
     }
