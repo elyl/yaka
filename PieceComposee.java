@@ -4,11 +4,18 @@ import java.util.Iterator;
 
 public class PieceComposee extends Piece
 {
+    private ArrayList<Piece> pieces;
+
     public PieceComposee(int x, int y, Piece p1, Piece p2)
     {
 	super(x, y, p1.getCouleur(), null);
-	super.joueur = p1.getJoueur();
+	this.joueur = p1.getJoueur();
+	/*this.pieces = new ArrayList<Piece>(3);
+	this.pieces.add(p1);
+	this.pieces.add(p2);*/
 	this.genMouvements(p1.getMouvements(), p2.getMouvements());
+	System.out.println(p1.getJoueur());
+	this.joueur.addPiece(this);
     }
 
     private void genMouvements(Mouvement m1[], Mouvement m2[])
@@ -33,6 +40,11 @@ public class PieceComposee extends Piece
 	i = 0;
 	while (itr.hasNext())
 	    super.mouvements[i++] = itr.next();
+    }
+
+    public boolean canStack()
+    {
+	return (this.pieces.size() < 3);
     }
 
     public char getCode()

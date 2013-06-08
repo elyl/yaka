@@ -16,6 +16,7 @@ public class Main
 	j = new JoueurHasardPur(Piece.BLANC);
 	System.out.println(j);
 	printList(j.getCoups());
+	j.coupChoisi().doIt();
 	System.out.println(p);
 	System.out.println(Plateau.plateau[1][3].canMove(Mouvements.AHEAD));
 	pc = new PieceComposee(4, 4, Plateau.plateau[1][2], Plateau.plateau[1][4]);

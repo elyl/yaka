@@ -11,7 +11,7 @@ public class Coup
 
     public boolean wining()
     {
-	return (this.piece.winingMove(this.mouvement));
+	return piece.winingMove(piece.getX() + piece.getCouleur() * mouvement.getDeltaX() * mouvement.getAmplitude());
     }
 
     public boolean capture()

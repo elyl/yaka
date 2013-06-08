@@ -38,6 +38,16 @@ public abstract class Piece
 	return (this.joueur);
     }
 
+    public void setJoueur(Joueur j)
+    {
+	this.joueur = j;
+    }
+
+    public boolean canStack()
+    {
+	return true;
+    }
+
     public String toString()
     {
 	String	str;
@@ -60,71 +70,47 @@ public abstract class Piece
 	return (this.mouvements);
     }
 
-    public boolean moveOut(Mouvement m)
+    public boolean moveOut(int newY)
     {
-	return (this.moveOut(this.y + this.couleur * m.getDeltaY()));
+	return newY > 7 || newY < 0;
     }
 
-    private boolean moveOut(int newY)
+    public boolean winingMove(int newX)
     {
-	if (newY > 7 || newY < 0)
-	    return (true);
-	else
-	    return (false);
+	return newX < 0 || newX > 7;
     }
 
-    public boolean winingMove(Mouvement m)
+    public boolean colision(int newX, int newY)
     {
-	return (this.winingMove(this.y + this.couleur * m.getDeltaY()));
-    }
-
-    private boolean winingMove(int newY)
-    {
-	if (newY < 0 || newY > 7)
-	    return (true);
-	else
-	    return (false);
-    }
-
-    public boolean colision(Mouvement m)
-    {
-	return (this.colision(this.x + this.couleur * m.getDeltaX(), this.y + this.couleur * m.getDeltaY()));
-    }
-
-    private boolean colision(int newX, int newY)
-    {
-	if (this.couleur == Plateau.plateau[newX][newY].getCouleur())
-	    return (true);
-	else
-	    return (false);
-    }
-
-    public boolean canMove(int newX, int newY)
-    {
-	if (!moveOut(newX) && (winingMove(newY) || !colision(newX, newY)))
-	    return (true);
-	else
-	    return (false);
+	return this.couleur == Plateau.plateau[newX][newY].getCouleur() && !this.canStack() && !Plateau.plateau[newX][newY].canStack();
     }
 
     public boolean canMove(Mouvement m)
     {
-	if (!moveOut(m) && (winingMove(m) || !colision(m)))
-	    return (true);
-	else
-	    return (false);
+	int	newX;
+	int	newY;
+
+	newX = this.x + this.couleur * m.getDeltaX() * m.getAmplitude();
+	newY = this.y + this.couleur * m.getDeltaY() * m.getAmplitude();
+	return !moveOut(newY) && (winingMove(newX) || !colision(newX, newY));
     }
 
     public boolean move(Mouvement m)
     {
 	int	newX;
 	int	newY;
+	Joueur	j;
 
-	newX = this.x + this.couleur * m.getDeltaX();
-	newY = this.y + this.couleur * m.getDeltaY();
+	newX = this.x + this.couleur * m.getDeltaX() * m.getAmplitude();
+	newY = this.y + this.couleur * m.getDeltaY() * m.getAmplitude();
 	Plateau.plateau[this.x][this.y] = new PieceVide(this.x, this.y, Piece.VIDE);
-	Plateau.plateau[newX][newY].getJoueur().removePiece(Plateau.plateau[newX][newY]);
-	Plateau.plateau[newX][newY] = this;
+	j = Plateau.plateau[newX][newY].getJoueur();
+        if (j != null)
+	    Plateau.plateau[newX][newY].getJoueur().removePiece(Plateau.plateau[newX][newY]);
+	if (j == joueur)
+	    Plateau.plateau[newX][newY] = new PieceComposee(newX, newY, this, Plateau.plateau[newX][newY]);
+	else
+	    Plateau.plateau[newX][newY] = this;
 	this.x = newX;
 	this.y = newY;
 	return (true);

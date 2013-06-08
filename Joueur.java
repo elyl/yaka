@@ -24,7 +24,10 @@ public abstract class Joueur
 	    {
 		j = 0;
 		while (j < 8)
-		    this.pieces.add(Plateau.plateau[i][j++]);
+		    {
+			Plateau.plateau[i][j].setJoueur(this);
+			this.pieces.add(Plateau.plateau[i][j++]);
+		    }
 		i++;
 	    }
     }
@@ -54,6 +57,11 @@ public abstract class Joueur
     }
 
     public abstract Coup coupChoisi();
+
+    public void addPiece(Piece p)
+    {
+	this.pieces.add(p);
+    }
 
     public void removePiece(Piece p)
     {
