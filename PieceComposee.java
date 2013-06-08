@@ -8,14 +8,15 @@ public class PieceComposee extends Piece
     {
 	super(x, y, p1.getCouleur(), null);
 	super.joueur = p1.getJoueur();
-	super.mouvements = this.genMouvements(p1.getMouvements(), p2.getMouvements());
+	this.genMouvements(p1.getMouvements(), p2.getMouvements());
     }
 
-    private Mouvement[] genMouvements(Mouvement m1[], Mouvement m2[])
+    private void genMouvements(Mouvement m1[], Mouvement m2[])
     {
        	ArrayList<Mouvement>	mouvements;
 	Iterator<Mouvement>	itr;
 	Mouvement		elem;
+	int			i;
 
 	mouvements = new ArrayList<Mouvement>();
 	mouvements.addAll(Arrays.asList(m1));
@@ -24,10 +25,14 @@ public class PieceComposee extends Piece
 	    {
 		elem = itr.next();
 		if (mouvements.contains(elem))
-		    elem.setAmplitude(elem.getAmplitude() + 1);
+		    elem = new Mouvement(elem.getDeltaX(), elem.getDeltaY(), elem.getAmplitude() + 1);
 		mouvements.add(elem);
 	    }
-	return (mouvements.toArray());
+	super.mouvements = new Mouvement[mouvements.size()];
+	itr = mouvements.iterator();
+	i = 0;
+	while (itr.hasNext())
+	    super.mouvements[i++] = itr.next();
     }
 
     public char getCode()
