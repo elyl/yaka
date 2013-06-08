@@ -19,7 +19,7 @@ public class Coup
     /** Retourne true si le coup courant permet de capturer une piece adverse */
     public boolean capture()
     {
-	return (true);
+	return piece.capture(piece.getX() + piece.getCouleur() * mouvement.getDeltaX(), piece.getY() + mouvement.getDeltaY());
     }
 
     /** Realise le coup courant */

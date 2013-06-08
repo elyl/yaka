@@ -94,6 +94,12 @@ public abstract class Piece
 	return this.couleur == Plateau.plateau[newX][newY].getCouleur() && !this.canStack() && !Plateau.plateau[newX][newY].canStack();
     }
 
+    /** Retourne true si le mouvement permet de capturer une piece adversaire */
+    public boolean capture(int newX, int newY)
+    {
+	return Plateau.plateau[newX][newY].getCouleur() == couleur * -1;
+    }
+
     /** Retourne true sir le mouvement de la piece courante est possible. */
     public boolean canMove(Mouvement m)
     {
@@ -101,7 +107,7 @@ public abstract class Piece
 	int	newY;
 
 	newX = this.x + this.couleur * m.getDeltaX() * m.getAmplitude();
-	newY = this.y + this.couleur * m.getDeltaY() * m.getAmplitude();
+	newY = this.y + m.getDeltaY() * m.getAmplitude();
 	return !moveOut(newY) && (winingMove(newX) || !colision(newX, newY));
     }
 
@@ -113,7 +119,7 @@ public abstract class Piece
 	Joueur	j;
 
 	newX = this.x + this.couleur * m.getDeltaX() * m.getAmplitude();
-	newY = this.y + this.couleur * m.getDeltaY() * m.getAmplitude();
+	newY = this.y + m.getDeltaY() * m.getAmplitude();
 	Plateau.plateau[this.x][this.y] = new PieceVide(this.x, this.y, Piece.VIDE);
 	j = Plateau.plateau[newX][newY].getJoueur();
         if (j != null)
