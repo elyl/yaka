@@ -19,8 +19,8 @@ public class Main
 	j.coupChoisi().doIt();
 	System.out.println(p);
 	System.out.println(Plateau.plateau[1][3].canMove(Mouvements.AHEAD));
-	pc = new PieceComposee(4, 4, Plateau.plateau[1][2], Plateau.plateau[1][4]);
-	printList(Arrays.asList(pc.getMouvements()));
+	//pc = new PieceComposee(4, 4, Plateau.plateau[1][2], Plateau.plateau[1][4]);
+	//printList(Arrays.asList(pc.getMouvements()));
     }
 
     public static <E> void printList(List<E> l)

@@ -106,9 +106,9 @@ public abstract class Piece
 	Plateau.plateau[this.x][this.y] = new PieceVide(this.x, this.y, Piece.VIDE);
 	j = Plateau.plateau[newX][newY].getJoueur();
         if (j != null)
-	    Plateau.plateau[newX][newY].getJoueur().removePiece(Plateau.plateau[newX][newY]);
+	   Plateau.plateau[newX][newY].getJoueur().removePiece(Plateau.plateau[newX][newY]);
 	if (j == joueur)
-	    Plateau.plateau[newX][newY] = new PieceComposee(newX, newY, this, Plateau.plateau[newX][newY]);
+	    Plateau.plateau[newX][newY] = new PieceComposee(newX, newY, this, Plateau.plateau[newX][newY]);
 	else
 	    Plateau.plateau[newX][newY] = this;
 	this.x = newX;

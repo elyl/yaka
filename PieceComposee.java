@@ -16,7 +16,6 @@ public class PieceComposee extends Piece
 	if (!this.pieces.contains(p2))
 	    this.pieces.add(p2);
 	this.genMouvements(p1.getMouvements(), p2.getMouvements());
-	System.out.println(p1.getJoueur());
 	this.joueur.addPiece(this);
     }
 
