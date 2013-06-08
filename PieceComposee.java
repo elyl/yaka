@@ -10,9 +10,11 @@ public class PieceComposee extends Piece
     {
 	super(x, y, p1.getCouleur(), null);
 	this.joueur = p1.getJoueur();
-	/*this.pieces = new ArrayList<Piece>(3);
-	this.pieces.add(p1);
-	this.pieces.add(p2);*/
+	this.pieces = new ArrayList<Piece>(3);
+	if (!this.pieces.contains(p1))
+	    this.pieces.add(p1);
+	if (!this.pieces.contains(p2))
+	    this.pieces.add(p2);
 	this.genMouvements(p1.getMouvements(), p2.getMouvements());
 	System.out.println(p1.getJoueur());
 	this.joueur.addPiece(this);
