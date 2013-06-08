@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 
+/** Gestion des pices composees et de l'empilement */
+
 public class PieceComposee extends Piece
 {
     private ArrayList<Piece> pieces;
@@ -19,6 +21,7 @@ public class PieceComposee extends Piece
 	this.joueur.addPiece(this);
     }
 
+    /** Genere la liste des mouvements possible pour la piece en cours de creation */
     private void genMouvements(Mouvement m1[], Mouvement m2[])
     {
        	ArrayList<Mouvement>	mouvements;
@@ -43,6 +46,7 @@ public class PieceComposee extends Piece
 	    super.mouvements[i++] = itr.next();
     }
 
+    /** Renvoie true si la piece est empilable(moins de trois pieces) */
     public boolean canStack()
     {
 	return (this.pieces.size() < 3);

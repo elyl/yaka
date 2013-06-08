@@ -32,16 +32,19 @@ public class Mouvement
 	return (this.deltaY);
     }
 
+    /** Retourne l'amplitude du mouvement courant */
     public int getAmplitude()
     {
 	return (this.amplitude);
     }
 
+    /** Modifie l'amplitude du mouvement courant */
     public void setAmplitude(int amplitude)
     {
 	this.amplitude = amplitude;
     }
 
+    /** Compare le mouvement m au mouvement courant et renvoie true s'ils sont identiques (amplitude exclue) */
     public boolean equals(Mouvement m)
     {
 	return m.getDeltaX() == deltaX && m.getDeltaY() == deltaY;

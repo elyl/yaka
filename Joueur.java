@@ -16,6 +16,7 @@ public abstract class Joueur
 	this.getPieces();
     }
 
+    /** Genere la liste des pieces du joueur courant */
     private void getPieces()
     {
 	int	i;
@@ -59,8 +60,10 @@ public abstract class Joueur
 	return (coups);
     }
 
+    /** Retourne le coup choisi par le joueur parmis la liste des coups possibles */
     public abstract Coup coupChoisi();
 
+    /** Ajoute une piece a la liste des pieces du joueur courant */
     public void addPiece(Piece p)
     {
 	this.pieces.add(p);
