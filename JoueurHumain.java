@@ -38,10 +38,10 @@ public class JoueurHumain extends Joueur
 		y = Integer.parseInt(tmp.substring(2, 3));
 		c = Integer.parseInt(tmp.substring(4, 5));
 		a = Integer.parseInt(tmp.substring(6, 7));
-		if (x < 7 && x > 0 && y < 7 && y > 0 && c > 0 && c < Mouvements.ALL_MOVES.length)
+		if (x < 8 && x >= 0 && y < 8 && y >= 0 && c > 0 && c < Mouvements.ALL_MOVES.length)
 		    coup = new Coup(Plateau.plateau[x][y], new Mouvement(Mouvements.ALL_MOVES[c].getDeltaX(), Mouvements.ALL_MOVES[c].getDeltaY(), a));
 		System.out.println(coup);
-		if (!inList(liste, coup))
+		if (coup != null && !inList(liste, coup))
 		    {
 			System.out.println("toto");
 			coup = null;

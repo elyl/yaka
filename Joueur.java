@@ -13,11 +13,11 @@ public abstract class Joueur
     {
 	this.couleur = couleur;
 	this.pieces = new ArrayList<Piece>(16);
-	this.getPieces();
+	this.genPieces();
     }
 
     /** Genere la liste des pieces du joueur courant */
-    private void getPieces()
+    private void genPieces()
     {
 	int	i;
 	int	j;
@@ -62,6 +62,12 @@ public abstract class Joueur
 
     /** Retourne le coup choisi par le joueur parmis la liste des coups possibles */
     public abstract Coup coupChoisi();
+
+    /** Retourne la liste de pieces joueur courant */
+    public ArrayList<Piece> getPieces()
+    {
+	return pieces;
+    }
 
     /** Ajoute une piece a la liste des pieces du joueur courant */
     public void addPiece(Piece p)

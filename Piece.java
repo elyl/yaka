@@ -94,6 +94,12 @@ public abstract class Piece
 	return (couleur == Piece.BLANC) ? 7 - x : x;
     }
 
+    /** Retourne le nombre de pieces empilees */
+    public int getSize()
+    {
+	return 1;
+    }
+
     /** Retourne true si le mouvement de la piece courante conduit à une colision. */
     public boolean colision(int newX, int newY)
     {
