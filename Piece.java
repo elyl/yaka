@@ -50,6 +50,7 @@ public abstract class Piece
 	this.joueur = j;
     }
 
+    /** Retourne true si la piece courante est empilable. */
     public boolean canStack()
     {
 	return true;

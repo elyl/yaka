@@ -57,7 +57,7 @@ public abstract class Joueur
 			    coups.add(new Coup(p, m));
 		    }
 	    }
-	return (coups);
+	return coups;
     }
 
     /** Retourne le coup choisi par le joueur parmis la liste des coups possibles */
@@ -90,7 +90,7 @@ public abstract class Joueur
 	str = "";
 	itr = this.pieces.iterator();
 	while (itr.hasNext())
-	    str = str + itr.next().toString() + "\n";
-	return (str);
+	    str += itr.next().toString() + "\n";
+	return str;
     }
 }

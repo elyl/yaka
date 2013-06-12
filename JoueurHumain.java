@@ -18,8 +18,8 @@ public class JoueurHumain extends Joueur
 	Coup		coup;
 	int		x;
 	int		y;
-	int		c;
-	int		a;
+	int		codeMouvement;
+	int		amplitude;
 
 	if (sc == null)
 	    sc = new Scanner(System.in);
@@ -30,12 +30,12 @@ public class JoueurHumain extends Joueur
 		tmp = "";
 		while (tmp.length() < 7)
 		    tmp = sc.nextLine();
-		x = Integer.parseInt(tmp.charAt(0));
-		y = Integer.parseInt(tmp.charAt(2));
-		c = Integer.parseInt(tmp.charAt(4));
-		a = Integer.parseInt(tmp.charAt(6));
-		if (x < 8 && x >= 0 && y < 8 && y >= 0 && c >= 0 && c < Mouvements.ALL_MOVES.length)
-		    coup = new Coup(Plateau.plateau[x][y], new Mouvement(Mouvements.ALL_MOVES[c].getDeltaX(), Mouvements.ALL_MOVES[c].getDeltaY(), a));
+		x = tmp.charAt(0) - '0';
+		y = tmp.charAt(2) - '0';
+		codeMouvement = tmp.charAt(4) - '0';
+		amplitude = tmp.charAt(6) - '0';
+		if (x < 8 && x >= 0 && y < 8 && y >= 0 && codeMouvement >= 0 && codeMouvement < Mouvements.ALL_MOVES.length)
+		    coup = new Coup(Plateau.plateau[x][y], new Mouvement(Mouvements.ALL_MOVES[codeMouvement].getDeltaX(), Mouvements.ALL_MOVES[codeMouvement].getDeltaY(), amplitude));
 		if (coup != null && !inList(liste, coup))
 		    coup = null;
 	    }
