@@ -3,7 +3,7 @@ public class Main
     public static void main(String args[])
     {
 	Plateau	p;
-	Joueur	j;
+	Joueur	j1;
 	Joueur  j2;
 	Coup	c;
 	int	i;
@@ -11,14 +11,14 @@ public class Main
 	p = new Plateau();
 	p.initialize();
 	i = 0;
-	j = new IA(Piece.BLANC);
+	j1 = new IA(Piece.BLANC);
 	j2 = new JoueurHumain(Piece.NOIR);
 	System.out.println(p);
-	c = j.coupChoisi();
-	while (!c.wining() && j.getPieces().size() != 0 && j2.getPieces().size() != 0)
+	c = j1.coupChoisi();
+	while (!c.wining() && j1.getPieces().size() != 0 && j2.getPieces().size() != 0)
 	    {
 		if (i++ % 2 == 0)
-		    c = j.coupChoisi();
+		    c = j1.coupChoisi();
 		else
 		    c = j2.coupChoisi();
 		if (!c.wining())
