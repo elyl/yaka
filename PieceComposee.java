@@ -28,6 +28,7 @@ public class PieceComposee extends Piece
 	Iterator<Mouvement>	itr;
 	Mouvement		elem;
 	int			i;
+	int			index;
 
 	mouvements = new ArrayList<Mouvement>();
 	mouvements.addAll(Arrays.asList(m1));
@@ -35,8 +36,8 @@ public class PieceComposee extends Piece
 	while (itr.hasNext())
 	    {
 		elem = itr.next();
-		if (mouvements.contains(elem))
-		    elem = new Mouvement(elem.getDeltaX(), elem.getDeltaY(), elem.getAmplitude() + 1);
+		if ((index = indexOf(mouvements, elem)) != -1)
+		    elem = new Mouvement(elem.getDeltaX(), elem.getDeltaY(), elem.getAmplitude() + mouvements.get(index).getAmplitude());
 		mouvements.add(elem);
 	    }
 	super.mouvements = new Mouvement[mouvements.size()];
@@ -44,6 +45,28 @@ public class PieceComposee extends Piece
 	i = 0;
 	while (itr.hasNext())
 	    super.mouvements[i++] = itr.next();
+    }
+
+    private int indexOf(ArrayList<Mouvement> mouvements, Mouvement m)
+    {
+	Iterator<Mouvement>	itr;
+	int			i;
+
+	i = 0;
+	itr = mouvements.iterator();
+	while (itr.hasNext())
+	    {
+		if (itr.next().equals(m))
+		    return i;
+		i++;
+	    }
+	return -1;
+    }
+
+    /** Retourne le nombre de piece empilees */
+    public int getSize()
+    {
+	return pieces.size();
     }
 
     /** Renvoie true si la piece est empilable(moins de trois pieces) */
