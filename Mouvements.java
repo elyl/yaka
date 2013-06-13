@@ -1,6 +1,5 @@
 /** Definition des mouvements. */
-public class Mouvements
-{
+public class Mouvements {
     public static final Mouvement RIGHT = new Mouvement(0, 1);
     public static final Mouvement LEFT = new Mouvement(0, -1);
     public static final Mouvement AHEAD = new Mouvement(1, 0);
