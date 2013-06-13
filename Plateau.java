@@ -17,9 +17,9 @@ public class Plateau
 	for(int j = 0; j < 8; j++){
 	    for(int i = 0; i < 2; i++){
 		if (n % 2 == 1)
-		    Plateau.plateau[i][j] = new PieceCarree(i, j, Piece.NOIR);
+		    Plateau.plateau[i][j] = new PieceCarree(i, j, Piece.BLANC);
 		else
-		    Plateau.plateau[i][j] = new PieceRonde(i, j, Piece.NOIR);
+		    Plateau.plateau[i][j] = new PieceRonde(i, j, Piece.BLANC);
 		n++;
 	    }
 
@@ -29,9 +29,9 @@ public class Plateau
 	    
 	    for(int i = 6; i < 8; i++){
 		if (n % 2 == 1)
-		    Plateau.plateau[i][j] = new PieceCarree(i, j, Piece.BLANC);
+		    Plateau.plateau[i][j] = new PieceCarree(i, j, Piece.NOIR);
 		else
-		    Plateau.plateau[i][j] = new PieceRonde(i, j, Piece.BLANC);
+		    Plateau.plateau[i][j] = new PieceRonde(i, j, Piece.NOIR);
 		n++;
 	    }
 	    n++;
