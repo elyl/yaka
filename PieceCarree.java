@@ -6,10 +6,10 @@ public class PieceCarree extends Piece {
     }
 
     /** Retourne le code de la piece carree courante. */
-    public char getCode() {
+    public String getCode() {
 		if (super.getCouleur() == Piece.BLANC)
-		    return ('C');
+		    return (" C ");
 		else
-		    return ('c');
+		    return (" c ");
     }
 }

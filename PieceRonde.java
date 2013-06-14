@@ -7,10 +7,10 @@ public class PieceRonde extends Piece
     }
 
     /** Retourne le code de la piece ronde courante. */
-    public char getCode() {
+    public String getCode() {
 		if (super.getCouleur() == Piece.BLANC)
-		    return ('R');
+		    return (" R ");
 		else
-		    return ('r');
+		    return (" r ");
 	}
 }

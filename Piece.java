@@ -60,7 +60,7 @@ public abstract class Piece {
 		return (str);
     }
 
-    public abstract char getCode();
+    public abstract String getCode();
 
     /** Retourne les mouvements possibles pour la piece courante. */
     public Mouvement[] getMouvements() {
@@ -77,12 +77,12 @@ public abstract class Piece {
     	return newX < 0 || newX > 7;
     }
     
-    /** Retourne la distance qui separe la piece de la victoire */
+    /** Retourne la distance qui separe la piece de la victoire. */
     public int distanceToWin() {
     	return (couleur == Piece.BLANC) ? 7 - x : x;
     }
 
-    /** Retourne le nombre de pieces empilees */
+    /** Retourne le nombre de pieces empilees. */
     public int getSize() {
     	return 1;
     }

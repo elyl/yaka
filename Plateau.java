@@ -38,15 +38,19 @@ public class Plateau {
     /** Affiche le plateau de jeu courant. */
     public String toString() {
 		String	str = "";
-	
-		str += "+ - - - - - - - - +\n";
+		int n = 0;
+		
+		str += "     0   1   2   3   4   5   6   7   \n";
+		str += "  + --- --- --- --- --- --- --- --- +\n";
 		for(int i = 0; i < 8; i++) {
-		    str += "|";
+		    str += i + " |";
 		    for(int j = 0; j < 8; j++)
 			str += " " + Plateau.plateau[i][j].getCode();
 		    str += " |\n";
+		    n++;
 		}
-		str += "+ - - - - - - - - +";
+		str += "  + --- --- --- --- --- --- --- --- +\n";
+		str += "Vous devez saisir les coordonnees de la piece a deplacer, le code du mouvement a realiser et son amplitude.\nLe tout en une ligne, separe par des espaces.\nExemple : X Y M A";
 		return str;
     }
 }

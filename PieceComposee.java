@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 
-/** Gestion des pices composees et de l'empilement */
+/** Gestion des pieces composees et de l'empilement. */
 
 public class PieceComposee extends Piece {
     private ArrayList<Piece> pieces;
@@ -72,7 +72,15 @@ public class PieceComposee extends Piece {
     }
 
     /** Retourne le code de la piece composee courante. */
-    public char getCode(){
-    	return ('x');
+    public String getCode(){
+	String			str = "";
+	Iterator<Piece>		itr = pieces.iterator();
+
+	while(itr.hasNext()) {
+	    str += itr.next().getCode().charAt(1);
+	}
+	if(str.length() < 3)
+	    str += " ";
+	return str;
     }
 }

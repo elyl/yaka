@@ -47,6 +47,6 @@ public class Coup {
 
     /** Affiche les caracteristiques du coup courant */
     public String toString() {
-    	return ("Piece: " + this.piece + "; Mouvement : " + this.mouvement);
+    	return ("Piece : " + this.piece + "; Mouvement : " + this.mouvement);
     }
 }

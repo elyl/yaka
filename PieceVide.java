@@ -6,7 +6,7 @@ public class PieceVide extends Piece {
     }
 
     /** Retourne le code de la piece fictive courante. */
-    public char getCode() {
-    	return ('.');
+    public String getCode() {
+    	return (" . ");
     }
 }
